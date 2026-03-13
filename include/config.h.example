@@ -1,0 +1,14 @@
+#pragma once
+
+#define WIFI_SSID "YOUR_WIFI_SSID"
+#define WIFI_PASSWORD "YOUR_WIFI_PASSWORD"
+
+// Example: "https://your-nightscout.example.com"
+#define NIGHTSCOUT_BASE_URL "https://your-nightscout.example.com"
+
+// Nightscout token (for token-based auth in query string)
+#define NIGHTSCOUT_TOKEN "YOUR_NIGHTSCOUT_TOKEN"
+
+// UTC offset in seconds, e.g. Germany (winter): 3600, summer handled with DST settings
+#define GMT_OFFSET_SECONDS 3600
+#define DAYLIGHT_OFFSET_SECONDS 3600
