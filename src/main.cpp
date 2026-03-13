@@ -9,7 +9,7 @@
 #include "config.h"
 
 namespace {
-constexpr int kBacklightPin = 38;
+constexpr int kBacklightPin = TFT_BL;
 constexpr unsigned long kScreenSwitchMs = 3000;
 constexpr unsigned long kGlucoseRefreshMs = 60000;
 
@@ -131,6 +131,10 @@ void setup() {
   tft.init();
   tft.setRotation(1);
   tft.fillScreen(TFT_BLACK);
+  tft.setTextDatum(MC_DATUM);
+  tft.setTextColor(TFT_GREEN, TFT_BLACK);
+  tft.drawString("Display OK", tft.width() / 2, tft.height() / 2, 4);
+  delay(600);
 
   connectWifi();
   configTime(GMT_OFFSET_SECONDS, DAYLIGHT_OFFSET_SECONDS, "pool.ntp.org",

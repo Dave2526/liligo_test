@@ -31,3 +31,9 @@ Die Abfrage erfolgt über:
 
 Falls deine Nightscout-Instanz einen anderen Auth- oder API-Weg nutzt,
 passe die URL in `src/main.cpp` entsprechend an.
+
+
+## Display-Pins (wie in der T-Display-S3-Vorlage)
+
+Die PlatformIO-Konfiguration nutzt die üblichen Template-Pins für das LilyGO T-Display-S3
+(u. a. `TFT_DC=16`, `TFT_CS=12`, `TFT_RST=5`, `TFT_BL=38`).
