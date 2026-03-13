@@ -1,39 +1,33 @@
-# T-Display-S3 Nightscout Anzeige (PlatformIO)
+# T-Display-S3 Nightscout (PlatformIO)
 
-Diese Vorlage wurde auf eine einzige PlatformIO-Umgebung reduziert.
-Sie zeigt auf dem LilyGO T-Display-S3 automatisch im 3-Sekunden-Wechsel:
+Diese Version orientiert sich enger an typischen T-Display-S3-Templates mit
+`Arduino_GFX` und expliziter Display-/Power-Pin-Initialisierung.
 
-1. den aktuellen Blutzucker aus Nightscout (Token-Authentifizierung)
-2. die aktuelle Uhrzeit
+## Anzeige
 
-## Struktur
+Automatischer Wechsel alle 3 Sekunden zwischen:
 
-- `platformio.ini` – PlatformIO-Setup für ESP32-S3 + TFT_eSPI + ArduinoJson
-- `src/main.cpp` – WLAN, Nightscout-Abruf, Zeit (NTP), Display-Logik
-- `include/config.h.example` – Konfigurationsvorlage für WLAN/Nightscout
+1. Nightscout-Blutzucker (Token-Auth)
+2. Uhrzeit (NTP)
 
-## Einrichtung
+## Konfiguration
 
-1. Kopiere `include/config.h.example` nach `include/config.h`.
-2. Trage WLAN, `NIGHTSCOUT_BASE_URL` und `NIGHTSCOUT_TOKEN` ein.
-3. Passe ggf. `GMT_OFFSET_SECONDS` / `DAYLIGHT_OFFSET_SECONDS` an.
-4. Flashen mit:
+1. `include/config.h.example` nach `include/config.h` kopieren.
+2. WLAN + Nightscout URL + Token eintragen.
+3. Zeitzone über `GMT_OFFSET_SECONDS` / `DAYLIGHT_OFFSET_SECONDS` setzen.
+
+## Flashen
 
 ```bash
 pio run -t upload
 ```
 
-## Hinweis zu Nightscout
+## Verwendete Display-Pins (template-nah)
 
-Die Abfrage erfolgt über:
-
-`/api/v1/entries/sgv.json?count=1&token=<DEIN_TOKEN>`
-
-Falls deine Nightscout-Instanz einen anderen Auth- oder API-Weg nutzt,
-passe die URL in `src/main.cpp` entsprechend an.
-
-
-## Display-Pins (wie in der T-Display-S3-Vorlage)
-
-Die PlatformIO-Konfiguration nutzt die üblichen Template-Pins für das LilyGO T-Display-S3
-(u. a. `TFT_DC=16`, `TFT_CS=12`, `TFT_RST=5`, `TFT_BL=38`).
+- `TFT_CS=6`
+- `TFT_DC=7`
+- `TFT_RST=5`
+- `TFT_SCLK=18`
+- `TFT_MOSI=17`
+- `TFT_BL=38`
+- `TFT_POWER=15`
